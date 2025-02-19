@@ -41,12 +41,10 @@ builder.Services.AddScoped<ICartService, CartService>();
 
 var app = builder.Build();
 
-// Настройка middleware
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
