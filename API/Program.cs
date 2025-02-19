@@ -48,14 +48,16 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICartService, CartService>();
 
 var app = builder.Build();
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080"; // ÂÀÆÍÎ ÄËß RENDER
+
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "10000"; 
 app.Urls.Add($"http://0.0.0.0:{port}");
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();
