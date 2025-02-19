@@ -44,6 +44,16 @@ namespace API.Controllers
             await productService.DeleteAsync(id);
             return Ok();
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProductById(string id)
+        {
+            var product = await productService.GetByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound($"Продукт с ID {id} не найден.");
+            }
+            return Ok(product);
+        }
         [HttpPost("many")]
         public async Task<ActionResult> AddMany([FromServices] IProductService productService, List<Product> products)
         {
