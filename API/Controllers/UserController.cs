@@ -24,10 +24,10 @@ namespace API.Controllers
             return Ok(users);
         }
         [HttpPost("register")]
-        public async Task<ActionResult> RegisterUser([FromServices] IUserService userService, User user)
+        public async Task<ActionResult<User>> RegisterUser([FromServices] IUserService userService, User user)
         {
             await userService.RegisterAsync(user);
-            return Ok();
+            return Ok(user);
         }
         [HttpPost("login")]
         public async Task<ActionResult<User>> Login([FromServices] IUserService userService, string email, string password)
