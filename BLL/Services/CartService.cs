@@ -64,6 +64,7 @@ namespace BLL.Services
                 OrderItems = checkedItems.Select(item => new OrderItem
                 {
                     ProductId = item.ProductId.ToString(),
+                    Title = item.Title,
                     Quantity = item.Quantity,
                     Price = item.Price,
                 }).ToList(),

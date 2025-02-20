@@ -19,6 +19,7 @@ namespace DAL.Models
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string ProductId { get; set; }
+        public string Title { get; set; }
 
         [BsonIgnore]
         public Product Product { get; set; }
