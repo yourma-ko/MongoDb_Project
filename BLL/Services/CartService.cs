@@ -51,7 +51,7 @@ namespace BLL.Services
             return cart.CartItems.Sum(item => item.Quantity * item.Price);
         }
 
-        public async Task CheckoutFromCartAsync(string customerId)
+        public async Task<Order> CheckoutFromCartAsync(string customerId)
         {
             var cart = await cartRepository.GetCartByCustomerIdAsync(customerId);
             var checkedItems = cart.CartItems.Where(ci => ci.Checked == true).ToList();
@@ -106,6 +106,7 @@ namespace BLL.Services
 
             user.Orders.Add(order);
             await userRepository.UpdateAsync(user);
+            return order;
         }
 
         public async Task ClearCartAsync(string customerId)

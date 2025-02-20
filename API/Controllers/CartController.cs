@@ -42,9 +42,9 @@ namespace API.Controllers
         }
 
         [HttpPost("{customerId}/checkout")]
-        public async Task<IActionResult> CheckoutFromCart(string customerId)
+        public async Task<ActionResult<Order>> CheckoutFromCart(string customerId)
         {
-            await cartService.CheckoutFromCartAsync(customerId);
+            var order = await cartService.CheckoutFromCartAsync(customerId);
             return NoContent();
         }
 
